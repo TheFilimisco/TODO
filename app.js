@@ -33,11 +33,17 @@ addTask.addEventListener("click", function () {
   inputTask.value = "";
 
   checkButton.addEventListener("click", function () {
-    checkButton.parentElement.style.textDecoration = "line-through";
+    if (checkButton.parentElement.style.textDecoration === "line-through") {
+      checkButton.parentElement.style.textDecoration = "none";
+    } else {
+      checkButton.parentElement.style.textDecoration = "line-through";
+    }
   });
 
   deleteButton.addEventListener("click", function (e) {
-    let target = e.target;
-    target.parentElement.parentElement.remove();
+    let target = e.target.closest(".task");
+    if (task) {
+      task.remove();
+    }
   });
 });
